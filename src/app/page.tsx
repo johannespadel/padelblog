@@ -27,10 +27,10 @@ export default async function Home() {
     <div>
       <Hero />
       
-      <section id="posts" className="py-20 bg-white">
+      <section id="posts" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Siste innlegg</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">Siste innlegg</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Utforsk mine tanker og erfaringer innen teknologi, programmering og andre interessante emner.
             </p>

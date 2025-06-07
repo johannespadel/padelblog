@@ -57,15 +57,15 @@ export default async function PostPage({ params }: PageProps) {
           <header className="mb-12 text-center">
             <Link 
               href="/" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mb-8 transition-colors"
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mb-8 transition-colors text-sm"
             >
-              <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Tilbake til forsiden
             </Link>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
               {post.title}
             </h1>
             
@@ -82,7 +82,7 @@ export default async function PostPage({ params }: PageProps) {
             </div>
             
             {post.description && (
-              <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
                 {post.description}
               </p>
             )}
@@ -95,9 +95,9 @@ export default async function PostPage({ params }: PageProps) {
           <footer className="mt-16 pt-8 border-t border-gray-200 text-center">
             <Link 
               href="/" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors text-sm"
             >
-              <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Tilbake til forsiden
