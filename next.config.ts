@@ -1,13 +1,16 @@
 import type { NextConfig } from 'next'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/padelblog' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/padelblog/' : '',
+  basePath: isProd ? '/padelblog' : '',
+  assetPrefix: isProd ? '/padelblog/' : '',
 }
 
 export default nextConfig

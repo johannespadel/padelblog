@@ -8,11 +8,12 @@ This is a personal blog project by Johannes Padel, created as a learning exercis
 
 ## Current State
 
-The repository is in early initialization phase with:
-- Basic README documentation
-- Git repository setup
-- Technology stack defined but not yet implemented
-- No build tools or dependencies configured yet
+The repository now has a working blog implementation with:
+- Complete Next.js application structure
+- TypeScript configuration
+- Tailwind CSS for styling
+- Basic blog posts and layout
+- GitHub Pages deployment configuration
 
 ## Technology Stack
 
@@ -33,13 +34,18 @@ Currently minimal with only essential files. Future structure will depend on tec
 
 ## Development Setup
 
-**Initial Setup (once implemented)**:
 ```bash
 npm install          # Install dependencies
-npm run dev         # Start development server
-npm run build       # Build for production
-npm run export      # Export static files for GitHub Pages
+npm run dev         # Start development server (http://localhost:3000)
+npm run build       # Build for production and export static files
+npm run lint        # Run ESLint
 ```
+
+**Project Structure**:
+- `src/app/` - Next.js App Router pages and layouts
+- `src/components/` - Reusable React components
+- `src/lib/` - Utility functions and shared code
+- `src/app/posts/[slug]/` - Individual blog post pages
 
 ## Deployment
 

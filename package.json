@@ -4,7 +4,11 @@
   "description": "A personal blog by Johannes Padel built with modern web technologies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +31,7 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
