@@ -35,8 +35,8 @@ export default async function Home() {
       <section className="mb-12">
         <h1 className="text-4xl font-bold mb-4">Welcome to my blog</h1>
         <p className="text-xl text-gray-600 leading-relaxed">
-          Hi, I'm Johannes Padel. This is my personal blog where I share thoughts, 
-          experiences, and insights about technology, life, and whatever else comes to mind.
+          Heisann. Dette er min personlige blogg hvor jeg deler tanker, erfaringer og prosjekter.
+          Følg med for oppdateringer om teknologi, programmering og hverdagsliv. Jeg håper du finner noe interessant her!
         </p>
       </section>
 
