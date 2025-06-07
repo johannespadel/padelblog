@@ -1,22 +1,13 @@
-import { client, POSTS_QUERY, DEBUG_QUERY } from '@/sanity/client'
+import { client, POSTS_QUERY } from '@/sanity/client'
 import { Post } from '@/lib/types'
 import Link from 'next/link'
 
 async function getPosts(): Promise<Post[]> {
-  // Return empty array if running during build without Sanity access
-  if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
-    return []
-  }
-  
   try {
     if (!client) {
       console.warn('Sanity client not configured')
       return []
     }
-    
-    // First, let's debug what fields are actually available
-    const debugPost = await client.fetch(DEBUG_QUERY)
-    console.log('DEBUG - First post structure:', JSON.stringify(debugPost, null, 2))
     
     const posts = await client.fetch(POSTS_QUERY)
     console.log('Fetched posts:', JSON.stringify(posts, null, 2))

@@ -9,11 +9,6 @@ interface PageProps {
 }
 
 async function getPost(slug: string): Promise<Post | null> {
-  // Return null if running during build without Sanity access
-  if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
-    return null
-  }
-  
   try {
     if (!client) {
       console.warn('Sanity client not configured')
@@ -29,15 +24,10 @@ async function getPost(slug: string): Promise<Post | null> {
 
 // Generate static params for all posts at build time
 export async function generateStaticParams() {
-  // Return placeholder during production build when Sanity might not be accessible
-  if (process.env.NODE_ENV === 'production') {
-    return [{ slug: 'placeholder-post' }]
-  }
-  
   try {
     if (!client) {
       console.warn('Sanity client not configured')
-      return [{ slug: 'placeholder-post' }]
+      return []
     }
     
     const posts: Post[] = await client.fetch(POSTS_QUERY)
@@ -45,16 +35,10 @@ export async function generateStaticParams() {
       slug: post.slug.current,
     })) || []
     
-    // If no posts exist yet, return a placeholder to prevent build errors
-    if (params.length === 0) {
-      return [{ slug: 'placeholder-post' }]
-    }
-    
     return params
   } catch (error) {
     console.error('Error generating static params:', error)
-    // Return placeholder to prevent build errors when Sanity is not accessible
-    return [{ slug: 'placeholder-post' }]
+    return []
   }
 }
 
