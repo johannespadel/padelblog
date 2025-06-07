@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Padel Blog project created as a learning exercise for Claude Code in terminal. The goal is to create a simple blog about padel (a racquet sport).
+This is a personal blog project by Johannes Padel, created as a learning exercise for Claude Code in terminal. The goal is to create a simple personal blog.
 
 ## Current State
 
