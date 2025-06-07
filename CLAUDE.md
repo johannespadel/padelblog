@@ -54,7 +54,7 @@ The project uses GitHub Pages for hosting with the following workflow:
 1. **Static Site Generation**: Next.js will be configured to export static files using `next export`
 2. **Build Process**: GitHub Actions will automatically build and deploy on push to main branch
 3. **Content Management**: Blog posts managed through Sanity CMS, changes trigger rebuilds
-4. **Domain**: Will be hosted at `username.github.io/padelblog` or custom domain if configured
+4. **Domain**: Hosted at `https://johannespadel.github.io/padelblog`
 
 **Deployment considerations**:
 - Next.js must be configured for static export compatibility
