@@ -3,7 +3,9 @@
     "allow": [
       "Bash(ls:*)",
       "Bash(find:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npm run build:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

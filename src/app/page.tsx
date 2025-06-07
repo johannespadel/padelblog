@@ -1,4 +1,35 @@
-export default function Home() {
+import { client, POSTS_QUERY, DEBUG_QUERY } from '@/sanity/client'
+import { Post } from '@/lib/types'
+import Link from 'next/link'
+
+async function getPosts(): Promise<Post[]> {
+  // Return empty array if running during build without Sanity access
+  if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+    return []
+  }
+  
+  try {
+    if (!client) {
+      console.warn('Sanity client not configured')
+      return []
+    }
+    
+    // First, let's debug what fields are actually available
+    const debugPost = await client.fetch(DEBUG_QUERY)
+    console.log('DEBUG - First post structure:', JSON.stringify(debugPost, null, 2))
+    
+    const posts = await client.fetch(POSTS_QUERY)
+    console.log('Fetched posts:', JSON.stringify(posts, null, 2))
+    return posts || []
+  } catch (error) {
+    console.error('Error fetching posts:', error)
+    return []
+  }
+}
+
+export default async function Home() {
+  const posts = await getPosts()
+
   return (
     <div>
       <section className="mb-12">
@@ -11,31 +42,32 @@ export default function Home() {
 
       <section>
         <h2 className="text-2xl font-semibold mb-6">Recent Posts</h2>
-        <div className="space-y-6">
-          <article className="border rounded-lg p-6 hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-semibold mb-2">
-              <a href="/posts/welcome" className="hover:text-blue-600">
-                Welcome to my blog
-              </a>
-            </h3>
-            <p className="text-gray-600 mb-3">
-              My first post introducing this blog and what you can expect to find here.
-            </p>
-            <time className="text-sm text-gray-500">January 1, 2024</time>
-          </article>
-
-          <article className="border rounded-lg p-6 hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-semibold mb-2">
-              <a href="/posts/learning-claude-code" className="hover:text-blue-600">
-                Learning Claude Code
-              </a>
-            </h3>
-            <p className="text-gray-600 mb-3">
-              My experience learning to use Claude Code for terminal-based development.
-            </p>
-            <time className="text-sm text-gray-500">January 2, 2024</time>
-          </article>
-        </div>
+        {posts.length > 0 ? (
+          <div className="space-y-6">
+            {posts.map((post) => (
+              <article key={post._id} className="border rounded-lg p-6 hover:shadow-md transition-shadow">
+                <h3 className="text-xl font-semibold mb-2">
+                  <Link href={`/posts/${post.slug.current}`} className="hover:text-blue-600">
+                    {post.title}
+                  </Link>
+                </h3>
+                <p className="text-gray-600 mb-3">
+                  {post.description || 'No description available'}
+                </p>
+                <div className="flex items-center gap-2 text-sm text-gray-500">
+                  <time>{new Date(post._createdAt).toLocaleDateString()}</time>
+                  <span>•</span>
+                  <span>By {post.author?.name || 'Unknown Author'}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-600 mb-4">No posts yet. Check back soon!</p>
+            <p className="text-sm text-gray-500">Posts will appear here once they are published in Sanity Studio.</p>
+          </div>
+        )}
       </section>
     </div>
   )

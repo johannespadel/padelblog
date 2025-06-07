@@ -12,7 +12,9 @@ The repository now has a working blog implementation with:
 - Complete Next.js application structure
 - TypeScript configuration
 - Tailwind CSS for styling
-- Basic blog posts and layout
+- Sanity CMS integration for content management
+- Dynamic blog posts fetched from Sanity
+- Sanity Studio for content editing
 - GitHub Pages deployment configuration
 
 ## Technology Stack
@@ -35,17 +37,25 @@ Currently minimal with only essential files. Future structure will depend on tec
 ## Development Setup
 
 ```bash
-npm install          # Install dependencies
-npm run dev         # Start development server (http://localhost:3000)
-npm run build       # Build for production and export static files
-npm run lint        # Run ESLint
+npm install              # Install dependencies
+cp .env.local.example .env.local  # Set up environment variables
+npm run dev             # Start development server (http://localhost:3000)
+npm run sanity:dev      # Start Sanity Studio for content management
+npm run build           # Build for production and export static files
+npm run lint            # Run ESLint
 ```
 
 **Project Structure**:
 - `src/app/` - Next.js App Router pages and layouts
-- `src/components/` - Reusable React components
-- `src/lib/` - Utility functions and shared code
-- `src/app/posts/[slug]/` - Individual blog post pages
+- `src/app/studio/` - Embedded Sanity Studio for content management
+- `src/app/posts/[slug]/` - Dynamic blog post pages
+- `src/sanity/` - Sanity schemas and configuration
+- `src/lib/` - Utility functions, types, and shared code
+
+**Content Management**:
+- Blog posts are managed through Sanity CMS
+- Access Sanity Studio at `/studio` or run `npm run sanity:dev`
+- Posts are dynamically fetched and statically generated at build time
 
 ## Deployment
 
