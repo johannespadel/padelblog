@@ -11,16 +11,20 @@ This is a personal blog project by Johannes Padel, created as a learning exercis
 The repository is in early initialization phase with:
 - Basic README documentation
 - Git repository setup
-- No technology stack chosen yet
-- No build tools or dependencies configured
+- Technology stack defined but not yet implemented
+- No build tools or dependencies configured yet
 
 ## Technology Stack
 
-**Status**: Not yet determined. Future decisions needed:
-- Web framework/static site generator
+- **Next.js** - React framework for production with static site generation
+- **React** - Component-based UI library
+- **TypeScript** - Type-safe JavaScript for better development experience
+- **Sanity** - Headless CMS for managing blog posts and content
+- **GitHub Pages** - Static site hosting and deployment platform
+
+**Future considerations**:
 - Styling approach (CSS framework, preprocessor)
-- Content management approach
-- Deployment strategy
+- Additional Next.js features and optimizations
 
 ## Repository Structure
 
@@ -33,6 +37,8 @@ No specific setup required yet. Once a technology stack is chosen, development c
 ## Notes for Claude Code
 
 - This is a learning project specifically designed for Claude Code practice
-- Technology decisions should be made collaboratively with the user
+- Technology stack is defined: Next.js + React + TypeScript + Sanity + GitHub Pages
 - Focus on simplicity and educational value over complexity
-- When adding new technologies, always explain the choices and setup process
+- When implementing features, follow Next.js and React best practices
+- Ensure TypeScript types are properly defined
+- Consider static site generation for GitHub Pages compatibility
