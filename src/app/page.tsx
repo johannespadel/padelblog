@@ -1,6 +1,8 @@
 import { client, POSTS_QUERY } from '@/sanity/client'
 import { Post } from '@/lib/types'
-import Link from 'next/link'
+import Hero from '@/components/Hero'
+import PostCard from '@/components/PostCard'
+import EmptyState from '@/components/EmptyState'
 
 async function getPosts(): Promise<Post[]> {
   try {
@@ -23,42 +25,32 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Welcome to my blog</h1>
-        <p className="text-xl text-gray-600 leading-relaxed">
-          Heisann. Dette er min personlige blogg hvor jeg deler tanker, erfaringer og prosjekter.
-          Følg med for oppdateringer om teknologi, programmering og hverdagsliv. Jeg håper du finner noe interessant her!
-        </p>
-      </section>
+      <Hero />
+      
+      <section id="posts" className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Siste innlegg</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Utforsk mine tanker og erfaringer innen teknologi, programmering og andre interessante emner.
+            </p>
+          </div>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-6">Recent Posts</h2>
-        {posts.length > 0 ? (
-          <div className="space-y-6">
-            {posts.map((post) => (
-              <article key={post._id} className="border rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-xl font-semibold mb-2">
-                  <Link href={`/posts/${post.slug.current}`} className="hover:text-blue-600">
-                    {post.title}
-                  </Link>
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  {post.description || 'No description available'}
-                </p>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <time>{new Date(post._createdAt).toLocaleDateString()}</time>
-                  <span>•</span>
-                  <span>By {post.author?.name || 'Unknown Author'}</span>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-600 mb-4">No posts yet. Check back soon!</p>
-            <p className="text-sm text-gray-500">Posts will appear here once they are published in Sanity Studio.</p>
-          </div>
-        )}
+          {posts.length > 0 ? (
+            <div className="grid gap-8 md:gap-12">
+              {posts.map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))}
+            </div>
+          ) : (
+            <EmptyState
+              title="Ingen innlegg ennå"
+              description="Jeg jobber med å skrive interessant innhold. Kom tilbake snart!"
+              actionText="Gå til Studio"
+              actionHref="https://padelblog.sanity.studio"
+            />
+          )}
+        </div>
       </section>
     </div>
   )

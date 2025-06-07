@@ -5,7 +5,8 @@
       "Bash(find:*)",
       "Bash(git add:*)",
       "Bash(npm run build:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": []
   }
