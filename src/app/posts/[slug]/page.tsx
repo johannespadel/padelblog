@@ -59,9 +59,7 @@ export default async function PostPage({ params }: PageProps) {
               href="/" 
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mb-8 transition-colors text-sm"
             >
-              <svg className="mr-1 h-2.5 w-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
+              <span className="mr-1">←</span>
               Tilbake til forsiden
             </Link>
             
@@ -97,9 +95,7 @@ export default async function PostPage({ params }: PageProps) {
               href="/" 
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors text-sm"
             >
-              <svg className="mr-1 h-2.5 w-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
+              <span className="mr-1">←</span>
               Tilbake til forsiden
             </Link>
           </footer>
