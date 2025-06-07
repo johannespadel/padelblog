@@ -19,12 +19,13 @@ The repository is in early initialization phase with:
 - **Next.js** - React framework for production with static site generation
 - **React** - Component-based UI library
 - **TypeScript** - Type-safe JavaScript for better development experience
+- **Tailwind CSS** - Utility-first CSS framework for styling
 - **Sanity** - Headless CMS for managing blog posts and content
 - **GitHub Pages** - Static site hosting and deployment platform
 
 **Future considerations**:
-- Styling approach (CSS framework, preprocessor)
 - Additional Next.js features and optimizations
+- Advanced Tailwind components and plugins
 
 ## Repository Structure
 
@@ -32,13 +33,35 @@ Currently minimal with only essential files. Future structure will depend on tec
 
 ## Development Setup
 
-No specific setup required yet. Once a technology stack is chosen, development commands should be documented here.
+**Initial Setup (once implemented)**:
+```bash
+npm install          # Install dependencies
+npm run dev         # Start development server
+npm run build       # Build for production
+npm run export      # Export static files for GitHub Pages
+```
+
+## Deployment
+
+The project uses GitHub Pages for hosting with the following workflow:
+
+1. **Static Site Generation**: Next.js will be configured to export static files using `next export`
+2. **Build Process**: GitHub Actions will automatically build and deploy on push to main branch
+3. **Content Management**: Blog posts managed through Sanity CMS, changes trigger rebuilds
+4. **Domain**: Will be hosted at `username.github.io/padelblog` or custom domain if configured
+
+**Deployment considerations**:
+- Next.js must be configured for static export compatibility
+- All API routes must be handled at build time or through external services
+- Image optimization may need special handling for static deployment
 
 ## Notes for Claude Code
 
 - This is a learning project specifically designed for Claude Code practice
-- Technology stack is defined: Next.js + React + TypeScript + Sanity + GitHub Pages
+- Technology stack: Next.js + React + TypeScript + Tailwind CSS + Sanity + GitHub Pages
 - Focus on simplicity and educational value over complexity
 - When implementing features, follow Next.js and React best practices
+- Use Tailwind utility classes for styling, avoid custom CSS when possible
 - Ensure TypeScript types are properly defined
-- Consider static site generation for GitHub Pages compatibility
+- Configure Next.js for static export to ensure GitHub Pages compatibility
+- All dynamic content should be fetched at build time for static generation
